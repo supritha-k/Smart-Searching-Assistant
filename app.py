@@ -4,6 +4,7 @@ import pandas as pd
 from sklearn.cluster import KMeans
 from bs4 import BeautifulSoup
 import warnings
+import os
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
