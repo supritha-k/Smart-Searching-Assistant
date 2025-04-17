@@ -4,7 +4,6 @@ import pandas as pd
 from sklearn.cluster import KMeans
 from bs4 import BeautifulSoup
 import warnings
-import os
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -68,7 +67,6 @@ def scrape_products(url):
 
     return suggested_products.to_dict(orient='records'), best_product
 
-
-  if __name__ == '__main__':
+if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
