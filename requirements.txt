@@ -1,1 +1,7 @@
- flask speechrecognition pyttsx3 requests pandas scikit-learn beautifulsoup4
+flask
+speechrecognition
+pyttsx3
+requests
+pandas
+scikit-learn
+beautifulsoup4
