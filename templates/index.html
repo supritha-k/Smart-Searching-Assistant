@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Shopping Assistant</title>
+    <style>
+      body {
+        color: red;
+        margin: 0;
+        font-family: "Times New Roman", Times, serif;
+        background-color: seashell;
+      }
+
+      #bgvideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+        object-fit: cover;
+        opacity: 0.75;
+      }
+
+      #header {
+        background-color: rgb(186, 61, 69);
+        display: flex;
+        justify-content: baseline;
+        position: sticky;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      #logo {
+        color: white;
+        width: 40%;
+        text-align: center;
+      }
+
+      #head {
+        display: flex;
+      }
+
+      #head img {
+        margin-right: -20px;
+      }
+
+      #title {
+        margin-left: 20px;
+      }
+
+      nav {
+        overflow: hidden;
+      }
+
+      #menu {
+        width: 60%;
+      }
+
+      nav a {
+        float: left;
+        display: inline;
+        color: white;
+        text-decoration: none;
+        padding: 1%;
+        margin-left: 4%;
+        margin-top: 2.5%;
+        font-size: larger;
+        width: 80px;
+        text-align: center;
+      }
+
+      nav a:hover {
+        font-weight: bold;
+      }
+
+      nav a:active {
+        font-weight: bold;
+      }
+
+      .hero {
+        background-color: #ffbaba;
+        padding: 3% 2%;
+        text-align: center;
+        padding-top: 60px;
+      }
+
+      .hero img {
+        margin-top: -65px;
+        height: 640px;
+        margin-left: -45%;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1%;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      #ai_img {
+        width: 40%;
+      }
+
+      #tag_div {
+        width: 60%;
+      }
+
+      #tag {
+        font-size: 40px;
+        text-align: left;
+        font-weight: bold;
+        margin-left: 200px;
+      }
+
+      #mini_tag {
+        font-size: 30px;
+        margin-left: 50px;
+        color: crimson;
+        font-weight: bold;
+      }
+
+      #how_to_use {
+        text-align: left;
+        font-size: 20px;
+        margin-left: 205px;
+      }
+
+      #intro {
+        display: flex;
+      }
+      .button {
+        background-color: crimson;
+        color: white;
+        padding: 1% 2%;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin-top: 2%;
+        display: inline-block;
+        font-size: 20px;
+        margin-left: -290px;
+      }
+
+      .button:hover {
+        background-color: rgb(120, 1, 25);
+      }
+
+      .section {
+        padding: 5% 2%;
+        text-align: center;
+        padding-top: 100px;
+      }
+
+      .section2 {
+        padding: 5% 2%;
+        text-align: center;
+        margin-top: -150px;
+      }
+      .section h2 {
+        margin-bottom: 3%;
+        color: #333;
+      }
+
+      .features,
+      .why-us,
+      .testimonials,
+      .products {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2%;
+      }
+
+      .box {
+        background-color: var(--clr);
+        padding: 2%;
+        margin-bottom: 50px;
+        width: 22%;
+        box-shadow: 0 0.2em 0.6em rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+        text-align: center;
+        font-size: 18px;
+        position: relative;
+        transition: 0.7s;
+      }
+
+      .box::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background: rgb(204, 107, 107);
+        transform-origin: left;
+        transition: transform 0.7s ease;
+        transform: scaleX(1);
+        border-radius: 20px;
+      }
+
+      .box:hover::before {
+        transform-origin: right;
+        transition: transform 0.7s ease;
+        transform: scaleX(0);
+      }
+
+      .box:hover {
+        background-color: rgb(246, 121, 129);
+        color: black;
+      }
+
+      .testimonial-box {
+        font-style: italic;
+        color: black;
+      }
+
+      .testimonial-box p {
+        margin-top: 1%;
+        font-weight: bold;
+      }
+
+      .demo_button {
+        background-color: crimson;
+        color: white;
+        padding: 1% 2%;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin-top: 2%;
+        display: inline-block;
+        font-size: 20px;
+        margin-left: -290px;
+        margin: auto;
+      }
+
+      .demo_button:hover {
+        background-color: rgb(120, 1, 25);
+      }
+
+      #demo_video {
+        background-color: #ffbaba;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+      }
+
+      #demo p {
+        font-size: 20px;
+      }
+
+      .section img {
+        height: 200px;
+        width: 300px;
+      }
+
+      .contact_section {
+        padding: 5% 2%;
+        text-align: center;
+        margin-top: -200px;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2%;
+        margin-top: 4%;
+      }
+
+      .contact-info {
+        font-size: 1rem;
+        margin-top: 1%;
+      }
+
+      hr {
+        margin: 4% auto;
+        width: 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header">
+      <div id="logo">
+        <div id="head">
+          <img
+            src="../static/images/SSA logo.png"
+            alt="SSA Logo"
+            width="100"
+            height="100"
+          />
+          <div id="title">
+            <h1>SMART SHOPPING ASSISTANT</h1>
+          </div>
+        </div>
+      </div>
+
+      <nav id="menu">
+        <a href="#home">HOME</a>
+        <a href="#features">FEATURES</a>
+        <a href="#products">PRODUCTS</a>
+        <a href="#demo">DEMO</a>
+        <a href="#why-us">WHY US</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </div>
+
+    <div class="hero" id="home">
+      <div id="intro">
+        <div id="ai_img">
+          <img src="../static/images/SSA Ai image.png" alt="AI Image" />
+        </div>
+        <div id="tag_div">
+          <p id="tag">
+            Voice-based product finder with real-time recommendations
+          </p>
+          <p id="mini_tag">Find the Best Deals with Just Your Voice</p>
+          <p id="how_to_use">
+            Say the name of any electronic product, and let us search, analyze
+            and suggest the best options for you from Flipkart.
+          </p>
+          <a href="#demo" class="button">Try the Assistant</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="features" class="section">
+      <h2>Features</h2>
+      <div class="features">
+        <div class="box">
+          <h3>🎨 Voice Input</h3>
+          <p>Search for products just by speaking. No typing needed!</p>
+        </div>
+        <div class="box">
+          <h3>📈 Price Clustering</h3>
+          <p>Identify the most affordable product options.</p>
+        </div>
+        <div class="box">
+          <h3>📹 Product Images</h3>
+          <p>See product images with price and rating in a table format.</p>
+        </div>
+        <div class="box">
+          <h3>💬 Conversational Search</h3>
+          <p>Ask for items under a price, e.g., "Mobiles under 20000".</p>
+        </div>
+        <div class="box">
+          <h3>🎧 Voice Results</h3>
+          <p>Listen to your results in an interactive voice format.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="products" class="section">
+      <h2>Products We Analyze</h2>
+      <div class="products">
+        <!-- Example Product Item -->
+        <div class="box">
+          <h3>Mobile phone</h3>
+          <img src="../static/images/mobile img.jpg" alt="Mobile" />
+        </div>
+        <div class="box">
+          <h3>MacBook</h3>
+          <img src="../static/images/macbook.jpg" alt="MacBook" />
+        </div>
+        <!-- Add the rest similarly -->
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="demo" class="section">
+      <h2>Live Demo</h2>
+      <p>Click the button below to activate the voice assistant.</p>
+      <button class="demo_button" onclick="startListening()">
+        Start Assistant
+      </button>
+      <div id="results"></div>
+      <div id="assistant-output"></div>
+    </section>
+
+    <section id="why-us" class="section">
+      <h2>Why Choose Us?</h2>
+      <div class="why-us">
+        <div class="box">
+          <h3>🥐 Smart Comparison</h3>
+          <p>Find affordable and top-rated products quickly.</p>
+        </div>
+        <div class="box">
+          <h3>🚀 Fast Results</h3>
+          <p>Clear comparisons delivered within seconds.</p>
+        </div>
+        <div class="box">
+          <h3>✔ Easy to Use</h3>
+          <p>Beginner-friendly voice interface.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section2">
+      <h2>What Users Say</h2>
+      <div class="testimonials">
+        <div class="box testimonial-box">
+          “This is like having a personal shopping expert!”
+        </div>
+        <div class="box testimonial-box">
+          “Just spoke the product name and done!”
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="contact" class="contact_section">
+      <h2>Contact Us</h2>
+      <p>Need help or want to collaborate? Reach out!</p>
+      <div class="contact-info">
+        📧 Email: support@smartshop.com<br />
+        ☎️ Phone: +91 97901 15943
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2025 Smart Shopping Assistant | Created with ♥ for Smart Shoppers
+      </p>
+    </footer>
+
+    <script>
+      function speak(text) {
+        const synth = window.speechSynthesis;
+        const utter = new SpeechSynthesisUtterance(text);
+        synth.speak(utter);
+      }
+
+      function startListening() {
+        const recognition = new (window.SpeechRecognition ||
+          window.webkitSpeechRecognition)();
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        speak("What should I search on Flipkart?");
+        recognition.start();
+
+        recognition.onresult = function (event) {
+          const query = event.results[0][0].transcript;
+          speak("Searching for " + query);
+          fetchResults(query);
+        };
+
+        recognition.onerror = function (event) {
+          speak("Sorry, I couldn't hear you properly.");
+        };
+      }
+
+      function fetchResults(query) {
+        fetch("/process", {
+          method: "POST",
+          body: JSON.stringify({ query: query }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const container = document.getElementById("results");
+            container.innerHTML = "";
+
+            if (data.error) {
+              speak("There was an error getting product details.");
+              return;
+            }
+
+            // Display top 3 affordable products
+            let html = "<h3>Top Affordable Products</h3><ul>";
+            data.products.forEach((p) => {
+              html += `<li>
+                <img src="${p.Image}" width="100" />
+                <strong>${p.Name}</strong><br>
+                ₹${p.Price} | ⭐ ${p.Rating}
+            </li>`;
+            });
+            html += "</ul>";
+            container.innerHTML = html;
+
+            // Speak best product
+            const best = data.best_product;
+            speak(
+              `The best product is ${best.Name}, priced at ₹${parseInt(
+                best.Price
+              )} with a rating of ${best.Rating}.`
+            );
+            window.open(best.Link, "_blank");
+          });
+      }
+    </script>
+  </body>
+</html>
